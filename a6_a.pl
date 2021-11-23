@@ -98,10 +98,10 @@ sub addPatient {
     }
 }
 
-sub processPatientData {        
-my $dailyReportFile = "dailyReport$month-$day-$year.txt";
-open(my $dayReportFileHandle, '>>', $dailyReportFile) or die "could not open file '$dailyReportFile' $!";
-
+sub processPatientData {
+if (areYouSure() == 1){        
+    my $dailyReportFile = "dailyReport$month-$day-$year.txt";
+    open(my $dayReportFileHandle, '>>', $dailyReportFile) or die "could not open file '$dailyReportFile' $!";
         for (my $i = 1; $i <= $#patients; $i++){
                for (my $j = 0; $j < (&COLUMBS); $j++){
                      if($j != (&COLUMBS-1)){
@@ -111,8 +111,26 @@ open(my $dayReportFileHandle, '>>', $dailyReportFile) or die "could not open fil
                      }
                 } 
               }              
-close $dayReportFileHandle;
-processNoInsurance();
+    close $dayReportFileHandle;
+    processNoInsurance();
+    }else{
+        main();
+    }
+}
+
+sub areYouSure {
+my $sure;        
+		$sure = -1;
+		while ($sure !~ /[0-9]/ || $sure > 1 || $sure < 0) {
+			print "\n\nAre You Sure you would like to process the patients for the day (0=no, 1=yes)? ";
+			chomp ($sure = <STDIN>);
+			if ($sure !~ /[0-9]/ || $sure > 1 || $sure < 0) {
+				say "Incorrect input. Please try again";
+				sleep 1;
+				system ("clear");
+			}
+    }
+return $sure;
 }
 
 sub processNoInsurance{

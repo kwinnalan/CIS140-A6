@@ -1,2 +1,4 @@
-1002, Barnard, Birthday, Boy, 11/23/1921, 100, none, OneHundredYearsOld
-1003, Mann, Guy, Joe, 11/24/1921, 99, none, nintynineyearsOld
+1001, Mann, Guy, Joe, 11/24/1921, 99, none, BrokenLeg
+1003, Johnson, Birthday, Boy, 11/23/1921, 100, none, Old
+1004, Kennedy, John, Fitzgerald, 5/29/1917, 104, none, Dead
+1005, Reagan, Ronald, Wilson, 2/6/1911, 110, none, Dead
